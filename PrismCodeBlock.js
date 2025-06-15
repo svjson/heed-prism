@@ -14,10 +14,16 @@
         preBlock.id = this.section.id;
       }
 
-      fetch(this.slide.path + this.section.source).then(response => {
-        return response.text();
+      const lang = this.section.lang;
+
+      const grammarPromise = lang
+        ?  Heed.loadScript(`${Heed.plugins.prism.pluginBase}/js/components/prism-${this.section.lang}.min.js`)
+        : Promise.resolve();
+
+      grammarPromise.then(() => {
+        return Heed.loadResource(this.slide.path + this.section.source);
       }).then(code => {
-        preBlock.innerHTML = `<code class="language-typescript">${code}</code>`;
+        preBlock.innerHTML = `<code class="language-${this.section.lang}">${code}</code>`;
         const codeBlock = el.querySelector('code');
         Prism.highlightElement(codeBlock);
         this.applyCommonProperties(el);

@@ -1,17 +1,20 @@
 {
   "pluginId": "prism",
   "pluginBase": "/plugins/prism/",
+  "defaultConfig": {
+    "theme": "tomorrow"
+  },
   "requires": {
     "js": [
-      "js/prism.js",
-      "js/prism-typescript.min.js"
-    ],
-    "pluginCss": [
-      "css/prism.css",
-      "css/prism-tomorrow.css"
+      "js/prism.js"
     ]
   },
   "provides": {
+    "hooks": {
+      "init": {
+        "src": "PrismInitHook.js"
+      }
+    },
     "layoutComponents": {
       "prism-code-block": {
         "src": "PrismCodeBlock.js"
