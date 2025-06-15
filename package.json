@@ -1,0 +1,19 @@
+{
+  "name": "heed-prism",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "Sven Johansson",
+  "description": "Plugin for Heed, providing Prism code blocks.",
+  "files": [
+    "plugin.json",
+    "PrismCodeBlock.js",
+    "js/",
+    "css/"
+  ],
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "dependencies": {
+    "prismjs": "^1.30.0"
+  }
+}

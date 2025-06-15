@@ -1,0 +1,21 @@
+{
+  "pluginId": "prism",
+  "pluginBase": "/plugins/prism/",
+  "requires": {
+    "js": [
+      "js/prism.js",
+      "js/prism-typescript.min.js"
+    ],
+    "pluginCss": [
+      "css/prism.css",
+      "css/prism-tomorrow.css"
+    ]
+  },
+  "provides": {
+    "layoutComponents": {
+      "prism-code-block": {
+        "src": "PrismCodeBlock.js"
+      }
+    }
+  }
+}
