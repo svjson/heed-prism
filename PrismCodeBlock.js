@@ -21,7 +21,9 @@
         : Promise.resolve();
 
       grammarPromise.then(() => {
-        return Heed.loadResource(this.slide.path + this.section.source);
+        return this.section.source
+          ? Heed.loadResource(this.slide.path + this.section.source)
+          : this.section.content;
       }).then(code => {
         preBlock.innerHTML = `<code class="language-${this.section.lang}">${code}</code>`;
         const codeBlock = el.querySelector('code');
