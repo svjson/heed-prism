@@ -3,6 +3,7 @@
   class PrismCodeBlock extends Heed.AbstractContentSection {
     constructor(section, slide) {
       super(section, slide);
+      this.prism = Heed.plugins.prism;
     }
 
     renderTo(el) {
@@ -17,7 +18,7 @@
       const lang = this.section.lang;
 
       const grammarPromise = lang
-        ?  Heed.loadScript(`${Heed.plugins.prism.pluginBase}/js/components/prism-${this.section.lang}.min.js`)
+        ?  Heed.loadScript(`${this.prism.pluginBase}/js/components/prism-${this.section.lang}.min.js`)
         : Promise.resolve();
 
       grammarPromise.then(() => {

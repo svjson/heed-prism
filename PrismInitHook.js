@@ -3,15 +3,16 @@
   class PrismInitHook {
 
     constructor(cfg) {
-      this.config = cfg;
+      this.cfg = cfg;
+      Object.assign(this, Heed.plugins.prism);
     }
 
     applyHook() {
-      const theme = this.config?.presentation?.getPluginConfig('prism')?.theme;
+      const theme = this.config?.theme;
 
       const prismCss = theme
-        ? `${Heed.plugins.prism.pluginBase}/css/prism-${theme}.min.css`
-        : `${Heed.plugins.prism.pluginBase}/css/prism.css`;
+        ? `${this.pluginBase}/css/prism-${theme}.min.css`
+        : `${this.pluginBase}/css/prism.css`;
 
       return Heed.loadStylesheet(prismCss);
     }
