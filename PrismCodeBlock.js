@@ -26,9 +26,12 @@
           ? Heed.loadResource(this.slide.path + this.section.source)
           : this.section.content;
       }).then(code => {
-        preBlock.innerHTML = `<code class="language-${this.section.lang}">${code}</code>`;
-        const codeBlock = el.querySelector('code');
-        Prism.highlightElement(codeBlock);
+        const codeEl = this.createElement('code', {
+          class: `language-${this.section.lang}`
+        })
+        codeEl.textContent = code;
+        preBlock.appendChild(codeEl);
+        Prism.highlightElement(codeEl);
         this.applyCommonProperties(el);
       });
 
